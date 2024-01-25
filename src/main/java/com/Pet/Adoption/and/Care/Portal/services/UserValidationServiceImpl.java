@@ -4,7 +4,9 @@ import com.Pet.Adoption.and.Care.Portal.exceptions.DuplicateUserException;
 import com.Pet.Adoption.and.Care.Portal.models.dtos.UserDto;
 import com.Pet.Adoption.and.Care.Portal.models.entities.User;
 import com.Pet.Adoption.and.Care.Portal.repositories.UserRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserValidationServiceImpl implements UserValidationService {
 
     private final UserRepository userRepository;

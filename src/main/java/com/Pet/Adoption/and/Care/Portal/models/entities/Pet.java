@@ -10,7 +10,6 @@ public class Pet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long id;
 
     @Column(name = "name")
@@ -21,4 +20,8 @@ public class Pet {
     private String gender;
     @Column(name = "breed")
     private String breed;
+    @Column(name = "type")
+    private String type;
+    @Column(name = "adoption_status")
+    private String adoptionStatus;
 }

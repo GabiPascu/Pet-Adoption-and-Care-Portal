@@ -8,8 +8,10 @@ import lombok.Data;
 public class UserDto {
 
     private Long id;
-    @NotBlank(message = "Invalid username")
-    private String username;
+    @NotBlank(message = "Invalid first name")
+    private String firstName;
+    @NotBlank(message = "Invalid last name")
+    private String lastName;
     @NotBlank
     @Email(message = "Invalid email")
     private String email;
