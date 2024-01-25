@@ -5,10 +5,7 @@ import com.Pet.Adoption.and.Care.Portal.services.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Validated
 @RestController
@@ -25,5 +22,16 @@ public class UserController {
     public ResponseEntity<UserDto> createUser(@Valid @RequestBody UserDto userDto) {
 
         return ResponseEntity.ok(userService.createUser(userDto));
+    }
+
+    @GetMapping("getUser")
+    public ResponseEntity<UserDto> getUser(@PathVariable Long userId) {
+        return ResponseEntity.ok(userService.getUser(userId));
+    }
+
+    @DeleteMapping("/{userId}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long userId) {
+        userService.deleteUser(userId);
+        return ResponseEntity.ok().build();
     }
 }

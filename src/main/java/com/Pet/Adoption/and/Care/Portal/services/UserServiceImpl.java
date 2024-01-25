@@ -29,4 +29,14 @@ public class UserServiceImpl implements UserService {
 
         return modelMapper.map(savedUser, UserDto.class);
     }
+
+    @Override
+    public void deleteUser(Long userId) {
+
+    }
+
+    @Override
+    public UserDto getUser(Long userId) {
+        return null;
+    }
 }
