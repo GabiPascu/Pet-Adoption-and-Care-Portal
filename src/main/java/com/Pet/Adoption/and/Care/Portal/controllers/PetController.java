@@ -1,16 +1,17 @@
 package com.Pet.Adoption.and.Care.Portal.controllers;
 
 import com.Pet.Adoption.and.Care.Portal.models.dtos.PetDto;
-import com.Pet.Adoption.and.Care.Portal.models.entities.Pet;
 import com.Pet.Adoption.and.Care.Portal.services.PetService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Validated
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/pets")
 public class PetController {
 
     private final PetService petService;
@@ -25,9 +26,21 @@ public class PetController {
         return ResponseEntity.ok(petService.createPet(petDto));
     }
 
-    @GetMapping("getPet")
-    public ResponseEntity<PetDto> getPet(@PathVariable Long petId) {
-        return ResponseEntity.ok(petService.getPet(petId));
+    @GetMapping("/{petId}")
+    public ResponseEntity<PetDto> getPetById(@PathVariable Long petId) {
+        return petService.getPetById(petId)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping
+    public ResponseEntity<List<PetDto>> getAllPets() {
+        return ResponseEntity.ok(petService.getAllPets());
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<PetDto> updatePet(@Valid @PathVariable Long id, @RequestBody PetDto bookingDetails) {
+        return ResponseEntity.ok(petService.createPet(bookingDetails));
     }
 
     @DeleteMapping("/{petId}")
