@@ -7,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Slf4j
 public class UserServiceImpl implements UserService {
@@ -28,6 +30,11 @@ public class UserServiceImpl implements UserService {
         log.info("User with id {}, saved in database.", savedUser.getId());
 
         return modelMapper.map(savedUser, UserDto.class);
+    }
+
+    @Override
+    public List<UserDto> getALlUsers() {
+        return null;
     }
 
     @Override
